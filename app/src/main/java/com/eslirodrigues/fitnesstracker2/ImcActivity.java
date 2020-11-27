@@ -17,6 +17,17 @@ public class ImcActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imc);
 
+        editWeight = findViewById(R.id.edit_weight_imc);
+        editHeight = findViewById(R.id.edit_height_imc);
+
+        Button btnSend = findViewById(R.id.btn_send);
+
+        btnSend.setOnClickListener(view -> {
+            if (!validate()) {
+                Toast.makeText(this, R.string.fields_messages, Toast.LENGTH_SHORT).show();
+                return;
+            }
+        });
     }
 
     private boolean validate() {
