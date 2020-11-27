@@ -7,34 +7,49 @@
     tools:context=".ImcActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:text="@string/imc_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="@string/imc_desc" />
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
             android:hint="@string/weight"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:inputType="number"
+            android:maxLength="3" />
 
         <EditText
-            android:hint="@string/height"
-            android:layout_marginEnd="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_marginEnd="40dp"
+            android:hint="@string/height"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_shape"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/calc"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
-
-
 </ScrollView>
