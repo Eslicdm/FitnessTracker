@@ -1,5 +1,6 @@
 package com.eslirodrigues.fitnesstracker2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -27,7 +28,22 @@ public class ImcActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.fields_messages, Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            int weight = Integer.parseInt(editWeight.getText().toString());
+            int height = Integer.parseInt(editHeight.getText().toString());
+
+            double imcResult = calculateImc(weight, height);
+
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.imc_response, imcResult))
+                    .create();
+
+            dialog.show();
         });
+    }
+
+    private double calculateImc(int weight, int height) {
+        return weight / (((double) height / 100) * ((double) height / 100));
     }
 
     private boolean validate() {
