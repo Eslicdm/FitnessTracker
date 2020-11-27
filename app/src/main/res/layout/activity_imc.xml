@@ -20,6 +20,7 @@
             android:text="@string/imc_desc" />
 
         <EditText
+            android:id="@+id/edit_weight_imc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
@@ -30,6 +31,7 @@
             android:maxLength="3" />
 
         <EditText
+            android:id="@+id/edit_height_imc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
