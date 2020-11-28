@@ -38,10 +38,20 @@ public class ImcActivity extends AppCompatActivity {
             double imcResult = calculateImc(weight, height);
             int imcResponse = responseImc(imcResult);
 
-            AlertDialog dialog = new AlertDialog.Builder(this)
+            AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
                     .setTitle(getString(R.string.imc_response, imcResult))
                     .setMessage(imcResponse)
                     .setPositiveButton(android.R.string.ok, (dialog1, which) -> {})
+                    .setNegativeButton(R.string.save, (dialog1, which) -> {
+                        new Thread(() -> {
+                            long calcId = SqlHelper.getINSTANCE(ImcActivity.this).addItem("imc", imcResult);
+                            runOnUiThread(() -> {
+                                if (calcId > 0) {
+                                    Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }).start();
+                    })
                     .create();
 
             dialog.show();
