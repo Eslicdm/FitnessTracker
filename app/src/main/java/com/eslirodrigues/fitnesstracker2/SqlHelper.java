@@ -15,12 +15,12 @@ import java.util.Locale;
 
 public class SqlHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "fitnesstrackerdb";
+    private static final String DB_NAME = "fitness_tracker.db";
     private static final int DB_VERSION = 1;
     private static SqlHelper INSTANCE;
 
     static SqlHelper getINSTANCE(Context context) {
-        if (INSTANCE != null)
+        if (INSTANCE == null)
             INSTANCE = new SqlHelper(context);
         return INSTANCE;
     }
@@ -42,8 +42,8 @@ public class SqlHelper extends SQLiteOpenHelper {
     }
 
     long addItem(String type, double response) {
-        long calcId = 0;
         SQLiteDatabase db = getWritableDatabase();
+        long calcId = 0;
 
         try {
             db.beginTransaction();
