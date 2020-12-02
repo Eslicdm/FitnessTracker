@@ -43,7 +43,16 @@ public class TmbActivity extends AppCompatActivity {
             double tmbResult = calculateTmb(height, weight, age);
 
             double tmbTotal = tmbResponse(tmbResult);
+
+            AlertDialog dialog = new AlertDialog.Builder(TmbActivity.this)
+                    .setTitle(getString(R.string.tmb_response, tmbTotal))
+                    .setPositiveButton(android.R.string.ok, (dialog1, which) -> {})
+                    .create();
+
+            dialog.show();
         });
+
+
     }
 
     private double calculateTmb(int height, int weight, int age) {
