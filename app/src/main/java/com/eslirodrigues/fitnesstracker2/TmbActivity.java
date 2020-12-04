@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import static androidx.core.os.LocaleListCompat.create;
+
 public class TmbActivity extends AppCompatActivity {
 
     private EditText editTmbHeight;
@@ -46,6 +48,16 @@ public class TmbActivity extends AppCompatActivity {
             AlertDialog dialog = new AlertDialog.Builder(TmbActivity.this)
                     .setTitle(getString(R.string.tmb_response, tmbTotal))
                     .setPositiveButton(android.R.string.ok, (dialog1, which) -> {})
+                    .setNegativeButton(R.string.save, (dialog1, which) -> {
+                        new Thread(() -> {
+                            long calcId = SqlHelper.getINSTANCE(TmbActivity.this).addItem("tmb", tmbTotal);
+                            runOnUiThread(() -> {
+                                if (calcId > 0) {
+                                    Toast.makeText(TmbActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }).start();
+                    })
                     .create();
 
             dialog.show();
