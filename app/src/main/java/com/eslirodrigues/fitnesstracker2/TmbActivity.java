@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -54,6 +55,7 @@ public class TmbActivity extends AppCompatActivity {
                             runOnUiThread(() -> {
                                 if (calcId > 0) {
                                     Toast.makeText(TmbActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+                                    openListCalcActivity();
                                 }
                             });
                         }).start();
@@ -67,8 +69,12 @@ public class TmbActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(editTmbHeight.getWindowToken(), 0);
             imm.hideSoftInputFromWindow(editTmbAge.getWindowToken(), 0);
         });
+    }
 
-
+    private void openListCalcActivity() {
+        Intent intent = new Intent(TmbActivity.this, ListCalcActivity.class);
+        intent.putExtra("type", "tmb");
+        startActivity(intent);
     }
 
     private double calculateTmb(int height, int weight, int age) {
