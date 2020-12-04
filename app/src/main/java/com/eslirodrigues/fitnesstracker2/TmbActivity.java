@@ -16,7 +16,6 @@ public class TmbActivity extends AppCompatActivity {
     private EditText editTmbHeight;
     private EditText editTmbWeight;
     private EditText editTmbAge;
-    private Button btnSendTmb;
     private Spinner spinner;
 
     @Override
@@ -27,7 +26,7 @@ public class TmbActivity extends AppCompatActivity {
         editTmbWeight = findViewById(R.id.edit_weight_tmb);
         editTmbHeight = findViewById(R.id.edit_height_tmb);
         editTmbAge = findViewById(R.id.edit_age_tmb);
-        btnSendTmb = findViewById(R.id.btn_send_tmb);
+        Button btnSendTmb = findViewById(R.id.btn_send_tmb);
         spinner = findViewById(R.id.spinner_tmb);
 
         btnSendTmb.setOnClickListener(view -> {
@@ -50,6 +49,11 @@ public class TmbActivity extends AppCompatActivity {
                     .create();
 
             dialog.show();
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editTmbWeight.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(editTmbHeight.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(editTmbAge.getWindowToken(), 0);
         });
 
 
